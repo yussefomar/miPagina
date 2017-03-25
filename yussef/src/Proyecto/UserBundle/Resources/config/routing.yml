@@ -1,0 +1,33 @@
+proyecto_user_index:
+    path:     /index
+    defaults: { _controller: ProyectoUserBundle:User:index }
+proyecto_user_subir:
+    path:     /subir
+    defaults: { _controller: ProyectoUserBundle:User:subir }
+proyecto_user_registrar:
+    path:     /registrar
+    defaults: { _controller: ProyectoUserBundle:User:registrar } 
+proyecto_user_crearRegistro:
+    path:     /crearRegistro
+    defaults: { _controller: ProyectoUserBundle:User:crearRegistro } 
+    methods: POST
+proyecto_user_homepage:
+    path:     / 
+    defaults: { _controller: ProyectoUserBundle:User:home }
+    
+proyecto_user_login:
+    path:     /login 
+    defaults: { _controller: ProyectoUserBundle:Security:login }    
+proyecto_user_login_check:
+    path:     /login_check 
+    defaults: { _controller: ProyectoUserBundle:Security:loginCheck } 
+proyecto_user_logout:
+    path:     /logout 
+         
+proyecto_user_acercademi:
+    path:     /infoDelIngeniero
+    defaults: { _controller: ProyectoUserBundle:User:acercaDeMi}  
+    
+proyecto_user_listausuarios:
+    path:     /listaUsuarios
+    defaults: { _controller: ProyectoUserBundle:User:listaUsuarios}      

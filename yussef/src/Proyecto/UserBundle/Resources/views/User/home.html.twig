@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig'%}
+
+
+{% block body %}
+    {{parent()}}
+    
+    <div class="container">
+        <p> Welcome</p>
+        {% if (app.user.role=='ROLE_ADMIN') %} {# es para app para recuperar el usuario logeado actual #}
+            Administrador
+        {% elseif (app.user.role=='ROLE_USER') %}
+            Usuario
+        {% endif %}   
+        
+        {{app.user.username}}
+        {{app.user.apellido}}
+    </div>    
+    
+    
+{% endblock %}    

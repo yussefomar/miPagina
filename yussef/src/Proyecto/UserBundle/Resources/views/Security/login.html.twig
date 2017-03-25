@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig'%}
+
+{% block body %}
+    
+    {{parent()}}
+    
+ {% block stylesheet %}
+     {{parent()}}
+     <link rel="stylesheet" href="{{asset('public/css/signin.css')}}">
+     
+     
+  {% endblock%}    
+    
+    <div class="container">
+        
+        
+        <form  class="form-signin" action="{{path('proyecto_user_login_check')}}" method="post">
+            <h2 class="form-signin-heading">Ingresar</h2>
+            {% if error %}
+            <div class="text-danger">
+                <p>
+                    <strong>
+                        
+                        {{error.messageKey}}
+                    </strong>
+                </p>
+            </div>
+            {% endif %}        
+  
+     <label for="username" class="sr-only">Username:</label>
+		    <input type="text" id="username" class="form-control" name="_username" value="{{ lastUsername }}" placeholder="{{ 'Username'|trans }}" required autofocus />
+     
+  
+  
+    <label for="password" class="sr-only">>Password</label>
+    
+      <input type="password" class="form-control" id="password" placeholder="Password" name="_password">
+     
+ 
+ 
+    
+    <input type="hidden" name="_target_path" value="proyecto_user_homepage">
+   
+      <button type="submit" class="btn btn-default">Sign in</button>
+    
+</form>
+        
+        
+        
+        
+     </div>   
+    
+    
+{% endblock %}    

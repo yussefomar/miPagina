@@ -1,0 +1,359 @@
+<?php
+
+namespace Proyecto\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuarios")
+ * @ORM\Entity(repositoryClass="Proyecto\UserBundle\Repository\UsuarioRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Usuario
+{
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Archivo", mappedBy="user")
+     */ 
+    protected $archivos;
+    
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    
+    
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreUsuario", type="string", length=50)
+     */
+    private $nombreUsuario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellido", type="string", length=50)
+     */
+    private $apellido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pass", type="string", length=255)
+     */
+    private $pass;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime")
+     */
+    private $updateAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role",columnDefinition="ENUM('ROLE_ADMIN','ROLE_USER')", type="string", length=255)
+     */
+    private $role;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombreUsuario
+     *
+     * @param string $nombreUsuario
+     * @return Usuario
+     */
+    public function setNombreUsuario($nombreUsuario)
+    {
+        $this->nombreUsuario = $nombreUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreUsuario
+     *
+     * @return string 
+     */
+    public function getNombreUsuario()
+    {
+        return $this->nombreUsuario;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Usuario
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     * @return Usuario
+     */
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string 
+     */
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Usuario
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set pass
+     *
+     * @param string $pass
+     * @return Usuario
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    /**
+     * Get pass
+     *
+     * @return string 
+     */
+    public function getPass()
+    {
+        return $this->pass;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Usuario
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @ORM\PrePersist
+     * @param \DateTime $createdAt
+     * @return Usuario
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     * @param \DateTime $updateAt
+     * @return Usuario
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return Usuario
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->archivos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add archivos
+     *
+     * @param \Proyecto\UserBundle\Entity\Archivo $archivos
+     * @return Usuario
+     */
+    public function addArchivo(\Proyecto\UserBundle\Entity\Archivo $archivos)
+    {
+        $this->archivos[] = $archivos;
+
+        return $this;
+    }
+
+    /**
+     * Remove archivos
+     *
+     * @param \Proyecto\UserBundle\Entity\Archivo $archivos
+     */
+    public function removeArchivo(\Proyecto\UserBundle\Entity\Archivo $archivos)
+    {
+        $this->archivos->removeElement($archivos);
+    }
+
+    /**
+     * Get archivos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArchivos()
+    {
+        return $this->archivos;
+    }
+}

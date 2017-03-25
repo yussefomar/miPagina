@@ -1,0 +1,13 @@
+h2 {
+	color:orange;
+}
+
+#imagen{
+ 
+height: auto;
+max-width: 100%
+}
+
+.body {
+   background-image:url('../images/sativa.png');
+}

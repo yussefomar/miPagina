@@ -1,0 +1,101 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    
+    {{parent()}}
+    
+     {% for flashMessage in app.session.flashbag.get('mensaje')%}
+                        
+                        <span class="alert-success">
+                            {{flashMessage}}
+                        </span>
+                        
+                    {% endfor %}  
+                    
+<div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                               
+                            </div>  
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="panel panel-default">
+                                    <div class="panel panel-heading">
+                                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>filtro
+                                    </div>  
+                                    <div class="panel panel-body">
+                                         <img id="imagen" src="{{asset('public/images/yusseff.jpg')}}" alt="CF"/>
+                                    </div>  
+                                </div>  
+                            </div>
+                                    
+                                 {% for unArchivo in archivos %}    
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="panel panel-default">
+                                        <div class="panel panel-heading">
+                                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"><span class="text-justify"> Nombre Usuario:{{unArchivo.getuser.getusername}}</span>
+                                        </div>  
+                                        <div class="panel panel-body">
+                                                    <p>
+                                                 <strong>
+                                                  {{unArchivo.getcreatedat|date('Y-m-d H:i:s')}}        
+                                                 </strong>
+                                                 <br>
+                                                 
+                                         
+                                                <img id="imagen" src="{{asset('uploads/archivos/')}}{{unArchivo.getarchivos}}" alt="CF"/> 
+                                        </div>  
+                                    </div>  
+                                </div>
+                            </div>  
+                                        
+                                 
+                              {% endfor %}       
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                                <div class="row">
+            <div class="col-md-12"> 
+                <div class="panel panel-default" id="about">
+                    <div class="panel-heading">
+                        About 
+                    </div>
+                    <div class="panel-body">
+                        
+                        <div class="text-justify">
+                            
+                      <p>
+                            <strong>
+   
+I am a young developer specialized in web applications. Also I am developing native applications for the Android mobile platform. Working especially with Google technologies, strongly oriented to the "cloud."
+                                                      </strong>
+                            
+                        </p> 
+                    </div>
+                        <br>
+                        <div class="text-center">
+                            <a class="btn btn-primary" href=" http://localhost:8080/blog/entrada.php" role="button">seguir leyendo
+                                
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                
+        </div>
+               
+                            </div>
+                </div>      
+            </div> 
+            
+           
+          
+ {% endblock  %}           
